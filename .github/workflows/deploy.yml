@@ -1,7 +1,9 @@
 name: CI/CD Pipeline for NASA Function
 
 on:
-  workflow_dispatch:  # manual trigger
+  push:
+    branches:
+      - main         # Auto-deploy only when pushing to 'main'
 
 jobs:
   deploy:
@@ -27,3 +29,4 @@ jobs:
         app-name: nasafuncti
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
         package: .
+
